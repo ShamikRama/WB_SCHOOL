@@ -1,5 +1,5 @@
 {
-    "order_uid": "b563feb7b2b84b6test",
+    "order_uid": "weffe4feb7b2b84b6",
     "track_number": "WBILMTESTTRACK",
     "entry": "WBIL",
     "delivery": {
@@ -12,7 +12,7 @@
       "email": "test@gmail.com"
     },
     "payment": {
-      "transaction": "b563feb7b2b84b6test",
+      "transaction": "weffe4feb7b2b84b6",
       "request_id": "",
       "currency": "USD",
       "provider": "wbpay",
@@ -25,7 +25,20 @@
     },
     "items": [
       {
-        "chrt_id": 9934930,
+        "chrt_id": 9932344,
+        "track_number": "WBILMTESTTRACK",
+        "price": 453,
+        "rid": "ab4219087a764ae0btest",
+        "name": "Mascaras",
+        "sale": 30,
+        "size": "0",
+        "total_price": 317,
+        "nm_id": 2389212,
+        "brand": "Vivienne Sabo",
+        "status": 202
+      },
+      {
+        "chrt_id": 19345344,
         "track_number": "WBILMTESTTRACK",
         "price": 453,
         "rid": "ab4219087a764ae0btest",

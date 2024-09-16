@@ -1,18 +1,18 @@
 {
-    "order_uid": "b563feb7b2b84b6test",
+    "order_uid": "3iowvvs4afqqd",
     "track_number": "WBILMTESTTRACK",
     "entry": "WBIL",
     "delivery": {
-      "name": "Test Testov",
+      "name": "Shamil Ramazanov",
       "phone": "+9720000000",
-      "zip": "2639809",
-      "city": "Kiryat Mozkin",
+      "zip": "261233",
+      "city": "New York",
       "address": "Ploshad Mira 15",
       "region": "Kraiot",
-      "email": "test@gmail.com"
+      "email": "asdfaf@gmail.com"
     },
     "payment": {
-      "transaction": "b563feb7b2b84b6test",
+      "transaction": "3iowvvs4afqqd",
       "request_id": "",
       "currency": "USD",
       "provider": "wbpay",
@@ -25,7 +25,20 @@
     },
     "items": [
       {
-        "chrt_id": 9934930,
+        "chrt_id":345820375 ,
+        "track_number": "WBILMTESTTRACK",
+        "price": 453,
+        "rid": "ab4219087a764ae0btest",
+        "name": "Mascaras",
+        "sale": 30,
+        "size": "0",
+        "total_price": 317,
+        "nm_id": 2389212,
+        "brand": "Vivienne Sabo",
+        "status": 202
+      },
+      {
+        "chrt_id":345375 ,
         "track_number": "WBILMTESTTRACK",
         "price": 453,
         "rid": "ab4219087a764ae0btest",
