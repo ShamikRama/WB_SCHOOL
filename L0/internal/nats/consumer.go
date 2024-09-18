@@ -2,7 +2,6 @@ package nats
 
 import (
 	"L0/internal/repository"
-	"database/sql"
 	"encoding/json"
 	"github.com/nats-io/stan.go"
 	"log"
@@ -23,15 +22,15 @@ func RecieveMsgIntoNats(clusterID string, clientID string) error {
 	}
 	defer db.Close()
 
-	// Подписка на тему "orders"
+	// Подписка на канал "orders"
 	_, err = sc.Subscribe("orders", func(m *stan.Msg) {
 		var orders repository.Order
 		if err := json.Unmarshal(m.Data, &orders); err != nil {
 			log.Fatalf("Ошибка десериализации сообщения: %v", err)
 		}
 
-		// Вставка данных в базу данных
-		err := insertOrder(db, &orders)
+		// Вставка данных в базу postgres
+		// func insertOrder
 		if err != nil {
 			log.Fatalf("Ошибка вставки данных в базу данных: %v", err)
 		}
@@ -46,8 +45,12 @@ func RecieveMsgIntoNats(clusterID string, clientID string) error {
 	return nil
 }
 
-// Функция для вставки данных в базу данных
-func insertOrder(db *sql.DB, order *repository.Order) error {
-	// логика вставки в таблицу
-	return nil
-}
+// func insertOrder(db *sql.DB, order *repository.Order){}
+
+// func insertInformationOrder(db *sql.DB, orders *models.Orders){}
+
+// func insertDelivery(db *sql.DB, orders *models.Orders){}
+
+// func insertPayment(db *sql.DB, orders *models.Orders){}
+
+//func insertItems(db *sql.DB, orders *models.Orders){}
