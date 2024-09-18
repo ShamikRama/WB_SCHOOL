@@ -1,4 +1,4 @@
-package utils
+package pkg
 
 import (
 	"fmt"
@@ -11,9 +11,9 @@ func ReadJson(filepath string) ([]byte, error) {
 	if err != nil {
 		return nil, fmt.Errorf(" Error opening filepath %s", err)
 	}
-	byte, err := io.ReadAll(file)
+	bytes, err := io.ReadAll(file)
 	if err != nil {
 		return nil, fmt.Errorf(" Error reading the file %s", err)
 	}
-	return byte, err
+	return bytes, err
 }
