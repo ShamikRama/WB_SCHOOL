@@ -8,10 +8,10 @@ import (
 	"os"
 )
 
-func ConnectToDB(envfile string) error {
+func ConnectToDB(envfile string) (*sql.DB, error) {
 	err := godotenv.Load(envfile)
 	if err != nil {
-		return fmt.Errorf("Error reading .env %s", err)
+		return nil, fmt.Errorf("Error reading .env %s", err)
 	}
 	user := os.Getenv("DB_USER")
 	password := os.Getenv("DB_PASSWORD")
@@ -22,16 +22,16 @@ func ConnectToDB(envfile string) error {
 	psqlInfo := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
 		host, port, user, password, dbname)
 
-	sc, err := sql.Open("postgres", psqlInfo)
+	db, err := sql.Open("postgres", psqlInfo)
 	if err != nil {
-		return fmt.Errorf("Error opening sql %s", err)
+		return nil, fmt.Errorf("Error opening sql %s", err)
 	}
-	defer sc.Close()
+	defer db.Close()
 
-	if err = sc.Ping(); err != nil {
+	if err = db.Ping(); err != nil {
 		log.Fatal(err)
 	}
 	fmt.Print("Успешное подключение к базе данных")
-	return nil
+	return db, nil
 
 }
