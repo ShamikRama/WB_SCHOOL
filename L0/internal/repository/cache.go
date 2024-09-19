@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log"
 	"sync"
-	"time"
 )
 
 type Cache struct {
@@ -32,7 +31,7 @@ func (c *Cache) Set(key string, order Order) {
 	c.data[key] = order
 }
 
-func LoadCacheFromDB(order Order) error {
+func LoadCacheFromDB(order Order, cache *Cache) error {
 	db, err := ConnectToDB("../../.env")
 	if err != nil {
 		fmt.Print(err)
@@ -46,7 +45,7 @@ func LoadCacheFromDB(order Order) error {
 	LoadPayment(db, &order, &id)
 	LoadItems(db, &order, &id)
 
-	cache.Set(orders.OrderUid, order, 1*time.Hour) // надо где-то написать функцию инициализации кэша, скорее всего в app
+	cache.Set(orders.OrderUid, order) // надо где-то написать функцию инициализации кэша, скорее всего в app
 	return nil
 }
 
