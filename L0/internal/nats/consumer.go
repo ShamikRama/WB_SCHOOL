@@ -9,7 +9,7 @@ import (
 	"log"
 )
 
-func RecieveMsgFromNats(clusterID string, clientID string) error {
+func RecieveMsgFromNats(clusterID string, clientID string, cache *repository.Cache) error {
 	// Подключение к NATS Streaming
 	sc, err := stan.Connect(clusterID, clientID)
 	if err != nil {
@@ -31,7 +31,6 @@ func RecieveMsgFromNats(clusterID string, clientID string) error {
 			log.Fatalf("Ошибка десериализации сообщения: %v", err)
 		}
 		if _, exist := cache.Get(orders.OrderUid); !exist { // надо создать новый кэш где-то
-			// Вставка данных в базу postgres
 			if err = insertOrder(db, &orders); err != nil {
 				log.Printf("Ошибка вставки данных в базу данных: %v", err)
 				return
