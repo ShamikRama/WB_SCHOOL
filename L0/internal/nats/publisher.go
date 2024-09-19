@@ -14,7 +14,6 @@ func LoadMsgToNats(filepath string, clusterID string, clientID string) error {
 		return fmt.Errorf("failed to connect to NATS: %w", err)
 	}
 	defer sc.Close()
-
 	msg, err := pkg.ReadJson(filepath)
 	if err != nil {
 		return fmt.Errorf("failed to read JSON from file: %w", err)

@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	"github.com/joho/godotenv"
+	_ "github.com/lib/pq"
 	"log"
 	"os"
 )
@@ -26,7 +27,6 @@ func ConnectToDB(envfile string) (*sql.DB, error) {
 	if err != nil {
 		return nil, fmt.Errorf("Error opening sql %s", err)
 	}
-	defer db.Close()
 
 	if err = db.Ping(); err != nil {
 		log.Fatal(err)
