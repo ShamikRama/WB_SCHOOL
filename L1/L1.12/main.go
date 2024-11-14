@@ -10,6 +10,8 @@ func main() {
 
 	mapa := make(map[string]struct{})
 
+	// добавляем ключи в мапу, т.к все ключи уникальные,
+	//они не повторяются
 	for _, val := range arr {
 		mapa[val] = struct{}{}
 	}
