@@ -5,12 +5,14 @@ import (
 	"fmt"
 	"math/rand"
 	"time"
+	"sync"
 )
 
 func main() {
 	channel := make(chan int)
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
+	wg := sync.WaitGroup{}
 	go func() {
 		for {
 			select {
@@ -26,13 +28,20 @@ func main() {
 		}
 	}()
 
-	for val := range channel {
+    wg.Add(1)
+	go func(){
+		defer wg.Done()
+		for val := range channel {
 		fmt.Println(val)
-	}
+		}
+	}()
+
+	wg.Wait()
 
 }
 
 // Разработать программу,
 // которая будет последовательно отправлять значения в канал,
-// а с другой стороны канала — читать.
-// По истечению N секунд программа должна завершаться.
+// а с другой сторонекунд программа должна завершаться.
+// ы канала — читать.
+// По истечению N с

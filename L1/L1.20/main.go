@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	s := "sun     dog cat"
+	s := "sun cat"
 	words := strings.Fields(s) // Разбиваем строку на слова
 
 	// Переворачиваем порядок слов
