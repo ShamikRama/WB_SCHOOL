@@ -4,7 +4,7 @@ package main
 
 import (
 	"context"
-	"crypto/rand"
+	"math/rand"
 	"fmt"
 	"sync"
 	"time"

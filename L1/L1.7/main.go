@@ -23,11 +23,9 @@ func main() {
 	}
 
 	for key, val := range mapa {
-		wg.Add(1)
-		go func() {
-			defer wg.Done()
-			fmt.Printf("%d - ключб, %d - значение ", key, val)
-		}()
+
+		fmt.Printf("%d - ключб, %d - значение ", key, val)
+
 	}
 
 	wg.Wait()
